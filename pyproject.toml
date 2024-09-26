@@ -1,0 +1,21 @@
+[project]
+name = "spin-wheel-service"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "kirtimanmishra", email = "mishrakirtiman24@gmail.com"},
+]
+dependencies = [
+    "pdm-django>=1.0.0",
+    "django>=4.2.16",
+]
+requires-python = ">=3.10"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.pdm]
+distribution = true

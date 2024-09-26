@@ -1,1 +1,1 @@
-# spin-wheel
+# spin-wheel app
