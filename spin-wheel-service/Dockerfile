@@ -16,6 +16,10 @@ RUN set -e; \
     . .venv/bin/activate; \
     pdm sync ; 
 
+# Give execute permissions to the entrypoint script
+RUN chmod +x /app/entrypoint.sh
+
 EXPOSE 8000
 
-CMD ["/bin/bash", "-c", "pdm run migrate && pdm run runserver 0.0.0.0:8000"]
+# Set the entrypoint to the entrypoint script
+ENTRYPOINT ["/app/entrypoint.sh"]
