@@ -8,7 +8,7 @@ authors = [
 dependencies = [
     "django>=5.1.1",
     "pdm-django>=1.0.0",
-    "python-dotenv>=1.0.1",
+    "python-dotenv==1.0.0",
 ]
 requires-python = ">=3.10"
 readme = "README.md"
@@ -25,3 +25,4 @@ migrate = "python manage.py migrate"
 
 [tool.pdm]
 distribution = true
+readme = "README.md"
