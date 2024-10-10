@@ -18,4 +18,4 @@ RUN set -e; \
 
 EXPOSE 8000
 
-CMD ["/bin/bash", "-c", ". .venv/bin/activate && pdm run python manage.py runserver 0.0.0.0:8000"]
+CMD ["/bin/bash", "-c", "pdm run migrate && pdm run runserver 0.0.0.0:8000"]
