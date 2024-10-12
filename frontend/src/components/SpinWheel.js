@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import Wheel from "./Wheel";
 import trumpImage from "../images/trump.png"; // Import Trump image
-import bidenImage from "../images/biden.png"; // Import Biden image
 import styles from "./SpinWheel.module.css"; // Import the CSS module
+import initImage1 from "../images/init_image_1.png"; // Import Biden image
+import initImage2 from "../images/init_image_2.png"; // Import Biden image
+import initImage3 from "../images/init_image_3.png"; // Import Biden image
+import kamalaImage from "../images/kamala.png"; // Import Biden image
 
 const SpinWheel = () => {
-  const candidates = [trumpImage, bidenImage]; // Use images instead of names
-  const [slots, setSlots] = useState([trumpImage, bidenImage, trumpImage]); // Initial slots
+  const candidates = [trumpImage, kamalaImage]; // Use images instead of names
+  const [slots, setSlots] = useState([initImage1, initImage2, initImage3]); // Initial slots
   const [spinning, setSpinning] = useState(false);
   const [winner, setWinner] = useState(""); // State to track the winner
 
@@ -24,13 +27,15 @@ const SpinWheel = () => {
 
       // Count occurrences of Trump and Biden
       const trumpCount = newSlots.filter((slot) => slot === trumpImage).length;
-      const bidenCount = newSlots.filter((slot) => slot === bidenImage).length;
+      const kamalaCount = newSlots.filter(
+        (slot) => slot === kamalaImage
+      ).length;
 
       // Determine the winner
       if (trumpCount >= 2) {
         setWinner("Trump");
-      } else if (bidenCount >= 2) {
-        setWinner("Biden");
+      } else if (kamalaCount >= 2) {
+        setWinner("kamala");
       } else {
         setWinner("No winner");
       }
