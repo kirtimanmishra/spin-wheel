@@ -1,0 +1,23 @@
+.wheel {
+    font-size: 2rem;
+            margin: 10px;
+            display: inline-block;
+            padding: 20px;
+            border: 1px solid #ccc;
+            width: 120px;
+            height: 120px;
+            line-height: 120px;
+            border-radius: 10px;
+            background-color: #f2f2f2;
+            text-align: center;
+            /* 3D effect */
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2),
+                        -5px -5px 10px rgba(255, 255, 255, 0.7),
+                        inset 5px 5px 10px rgba(0, 0, 0, 0.1),
+                        inset -5px -5px 10px rgba(255, 255, 255, 0.5);
+  }
+  
+  .spinning {
+    background-color: lightgray;
+  }
+  
