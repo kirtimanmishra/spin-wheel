@@ -1,23 +1,29 @@
 .wheel {
     font-size: 2rem;
-    margin: 10px;
+    margin: 20px;
     display: inline-block;
-    padding: 20px;
+    padding: 0; /* Remove padding to allow the image to fill the area */
     border: 1px solid #ccc;
-    width: 120px;
-    height: 120px;
-    line-height: 120px;
+    width: 180px;
+    height: 180px;
+    line-height: 180px; /* This line is not needed for images */
     border-radius: 10px;
     background-color: #f2f2f2;
     text-align: center;
+  
     /* 3D effect */
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2),
                 -5px -5px 10px rgba(255, 255, 255, 0.7),
                 inset 5px 5px 10px rgba(0, 0, 0, 0.1),
                 inset -5px -5px 10px rgba(255, 255, 255, 0.5);
+  
+    overflow: hidden; /* Ensure any overflow is hidden */
   }
   
-  .spinning {
-    background-color: lightgray;
+  .candidateImage {
+    width: 100%; /* Fill the entire width of the slot */
+    height: 100%; /* Fill the entire height of the slot */
+    object-fit: cover; /* Maintain aspect ratio while covering */
+    border-radius: 10px; /* Optional: match the border radius */
   }
   

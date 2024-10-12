@@ -1,21 +1,8 @@
-.container {
+  .appContainer {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    justify-content: space-between;
-  }
-  
-  .topSection {
-    flex: 1.5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .bottomSection {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    align-items: center; /* Center the items horizontally */
+    padding: 20px; /* Add some padding around the app */
+    /* background-color: #f9f9f9; Change the background color */
   }
   

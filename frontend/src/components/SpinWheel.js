@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import Wheel from "./Wheel";
+import trumpImage from "../images/trump.png"; // Import Trump image
+import bidenImage from "../images/biden.png"; // Import Biden image
 import styles from "./SpinWheel.module.css"; // Import the CSS module
 
 const SpinWheel = () => {
-  const candidates = ["Trump", "Biden"]; // Possible options for slots
-  const [slots, setSlots] = useState(["A", "B", "C"]); // Initial slots
+  const candidates = [trumpImage, bidenImage]; // Use images instead of names
+  const [slots, setSlots] = useState([trumpImage, bidenImage, trumpImage]); // Initial slots
   const [spinning, setSpinning] = useState(false);
   const [winner, setWinner] = useState(""); // State to track the winner
 
@@ -14,15 +16,15 @@ const SpinWheel = () => {
     setWinner(""); // Reset winner state before spinning
 
     setTimeout(() => {
-      // Randomly assign "Trump" or "Biden" to each slot
+      // Randomly assign Trump or Biden images to each slot
       const newSlots = slots.map(
         () => candidates[Math.floor(Math.random() * 2)]
       );
       setSlots(newSlots);
 
-      // Count occurrences of "Trump" and "Biden"
-      const trumpCount = newSlots.filter((slot) => slot === "Trump").length;
-      const bidenCount = newSlots.filter((slot) => slot === "Biden").length;
+      // Count occurrences of Trump and Biden
+      const trumpCount = newSlots.filter((slot) => slot === trumpImage).length;
+      const bidenCount = newSlots.filter((slot) => slot === bidenImage).length;
 
       // Determine the winner
       if (trumpCount >= 2) {
@@ -39,8 +41,6 @@ const SpinWheel = () => {
 
   return (
     <div className={styles.spinWheelContainer}>
-      <h1>Spin the Wheel!</h1>
-
       {/* Loader appears while spinning */}
       {spinning ? (
         <div className={styles.loader}></div>
