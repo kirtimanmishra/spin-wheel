@@ -52,7 +52,7 @@ const SpinWheel = () => {
         </div>
       )}
 
-      <button onClick={spin} disabled={spinning}>
+      <button className={styles.spinButton} onClick={spin} disabled={spinning}>
         {spinning ? "Spinning..." : "Spin"}
       </button>
 

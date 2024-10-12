@@ -4,9 +4,9 @@
     display: inline-block;
     padding: 0; /* Remove padding to allow the image to fill the area */
     border: 1px solid #ccc;
-    width: 180px;
-    height: 180px;
-    line-height: 180px; /* This line is not needed for images */
+    width: 160px;
+    height: 160px;
+    line-height: 160px; /* This line is not needed for images */
     border-radius: 10px;
     background-color: #f2f2f2;
     text-align: center;
