@@ -1,5 +1,3 @@
-# your_app/exceptions.py
-
 from rest_framework.exceptions import APIException
 
 
