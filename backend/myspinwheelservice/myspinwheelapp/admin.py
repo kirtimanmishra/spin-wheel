@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import GlobalVoteCount, UserVoteCount
+
+admin.site.register(GlobalVoteCount)
+admin.site.register(UserVoteCount)

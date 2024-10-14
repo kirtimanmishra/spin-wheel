@@ -13,7 +13,3 @@ class UserVoteCountSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserVoteCount
         fields = "__all__"
-
-
-class VoteSerializer(serializers.Serializer):
-    winner = serializers.ChoiceField(choices=["biden", "trump"])

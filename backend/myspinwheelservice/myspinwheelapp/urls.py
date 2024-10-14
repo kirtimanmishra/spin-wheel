@@ -21,7 +21,7 @@ from django.urls import include, path
 from .views import GlobalVoteListView, RecordVoteView, UserVoteListView
 
 urlpatterns = [
-    path("setVotes/", RecordVoteView.as_view(), name="record_vote"),
-    path("getVotes/", GlobalVoteListView.as_view(), name="global_vote_list"),
-    path("getVotes/<str:user_id>/", UserVoteListView.as_view(), name="user_vote_list"),
+    path("setVotes", RecordVoteView.as_view(), name="record_vote"),
+    path("getVotes", GlobalVoteListView.as_view(), name="global_vote_list"),
+    path("getVotes/<str:user_id>", UserVoteListView.as_view(), name="user_vote_list"),
 ]

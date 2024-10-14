@@ -4,12 +4,9 @@ from rest_framework import permissions, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from .exceptions import InvalidWinnerParamError, ParamNotFound
 from .models import GlobalVoteCount, UserVoteCount
-from .serializers import (
-    GlobalVoteCountSerializer,
-    UserVoteCountSerializer,
-    VoteSerializer,
-)
+from .serializers import GlobalVoteCountSerializer, UserVoteCountSerializer
 
 
 class RecordVoteView(APIView):
@@ -19,27 +16,43 @@ class RecordVoteView(APIView):
         return Response(message, status=status.HTTP_200_OK)
 
     def post(self, request):
-        serializer = VoteSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
+        winner = request.query_params.get("winner")
 
-        winner = serializer.validated_data["winner"]
+        if not winner:
+            raise ParamNotFound()
 
-        user_id = request.COOKIES.get("userId")
+        # Check if the winner is valid
+        valid_choices = ["kamala", "trump"]
+        if winner not in valid_choices:
+            raise InvalidWinnerParamError(winner, valid_choices)
 
-        global_vote, _ = GlobalVoteCount.objects.get_or_create(id=uuid.uuid4())
-
+        user_id = str(request.COOKIES.get("userId"))
+        print("*** user_id ** ", user_id)
+        global_vote = GlobalVoteCount.objects.first()
+        if not global_vote:
+            global_vote = GlobalVoteCount.objects.create()
         self.update_vote_count(global_vote, winner)
 
-        global_vote_serializer = GlobalVoteCountSerializer(global_vote)
+        print("*** ", global_vote)
+        data = {
+            "trump_vote_count": global_vote.trump_vote_count,
+            "kamala_vote_count": global_vote.kamala_vote_count,
+        }
+        global_vote_serializer = GlobalVoteCountSerializer(global_vote, data=data)
         global_vote_serializer.is_valid(raise_exception=True)
         global_vote_serializer.save()
 
         if user_id:
             user_vote, _ = UserVoteCount.objects.get_or_create(user_id=user_id)
-
+            print("### user_vote ### ", user_vote)
             self.update_vote_count(user_vote, winner)
-
-            user_vote_serializer = UserVoteCountSerializer(user_vote)
+            data = {
+                "trump_vote_count": user_vote.trump_vote_count,
+                "kamala_vote_count": user_vote.kamala_vote_count,
+                "user_id": user_vote.user_id,
+            }
+            user_vote_serializer = UserVoteCountSerializer(user_vote, data=data)
+            print("### data ### ", data)
             user_vote_serializer.is_valid(raise_exception=True)
             user_vote_serializer.save()
 
@@ -49,13 +62,13 @@ class RecordVoteView(APIView):
             )
         else:
             return Response(
-                {"error": "No user ID found in cookies."},
-                status=status.HTTP_400_BAD_REQUEST,
+                {"message": "Vote recorded successfully only for global."},
+                status=status.HTTP_200_OK,
             )
 
     def update_vote_count(self, vote_count_instance, winner):
-        if winner == "biden":
-            vote_count_instance.biden_vote_count += 1
+        if winner == "kamala":
+            vote_count_instance.kamala_vote_count += 1
         elif winner == "trump":
             vote_count_instance.trump_vote_count += 1
 
