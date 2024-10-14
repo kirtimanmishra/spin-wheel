@@ -57,9 +57,15 @@ const SpinWheel = () => {
         </div>
       )}
 
-      <button className={styles.spinButton} onClick={spin} disabled={spinning}>
-        {spinning ? "Spinning..." : "Spin"}
-      </button>
+      {!spinning && (
+        <button
+          className={styles.spinButton}
+          onClick={spin}
+          disabled={spinning}
+        >
+          <span className={styles.spinText}>Spin</span>
+        </button>
+      )}
 
       {winner && <h2>Winner: {winner}</h2>}
     </div>

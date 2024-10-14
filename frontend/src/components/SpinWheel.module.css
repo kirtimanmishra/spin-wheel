@@ -12,7 +12,7 @@
   background-color: #4f5eb1; /* Green background */
   border: none; /* Remove border */
   color: white; /* White text color */
-  padding: 15px 30px; /* Padding for the button */
+  padding: 10px 20px; 
   text-align: center; /* Center text */
   text-decoration: none; /* Remove underline from text */
   display: inline-block; /* Display as inline-block */
@@ -54,4 +54,15 @@
     transform: rotate(360deg);
   }
 }
-  
+
+.spinText {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ecf2f596;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.spin-text:hover {
+  color: #45a049;
+}
