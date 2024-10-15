@@ -18,10 +18,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
-from .views import GlobalVoteListView, RecordVoteView, UserVoteListView
+from .views import GlobalVoteListView, UserVoteListView
 
 urlpatterns = [
-    path("setVotes", RecordVoteView.as_view(), name="record_vote"),
-    path("getVotes", GlobalVoteListView.as_view(), name="global_vote_list"),
-    path("getVotes/<str:user_id>", UserVoteListView.as_view(), name="user_vote_list"),
+    path("globalVotes", GlobalVoteListView.as_view(), name="global_vote_list"),
+    path("userVotes", UserVoteListView.as_view(), name="user_vote_list"),
 ]

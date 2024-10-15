@@ -4,7 +4,10 @@ from rest_framework.exceptions import APIException
 class ParamNotFound(APIException):
     status_code = 400
     default_detail = "This field is required."
-    default_code = "winner_not_found"
+
+    def __init__(self, param):
+        detail = f"{param} is required field"
+        super().__init__(detail=self.detail)
 
 
 class InvalidWinnerParamError(APIException):
