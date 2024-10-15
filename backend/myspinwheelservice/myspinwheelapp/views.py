@@ -1,10 +1,13 @@
 import uuid
 
+from myspinwheelapp.exceptions import (  # importing from a package instead of relative import
+    InvalidWinnerParamError,
+    ParamNotFoundError,
+)
 from rest_framework import permissions, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .exceptions import InvalidWinnerParamError, ParamNotFound
 from .models import GlobalVoteCount, UserVoteCount
 from .serializers import GlobalVoteCountSerializer, UserVoteCountSerializer
 
@@ -79,8 +82,7 @@ class VoteListHelper:
     @staticmethod
     def validate_winner(winner):
         if not winner:
-            raise ParamNotFound(param=winner)
-
+            raise ParamNotFoundError(param="winner")
         valid_choices = ["kamala", "trump"]
         if winner not in valid_choices:
             raise InvalidWinnerParamError(winner, valid_choices)
@@ -88,7 +90,7 @@ class VoteListHelper:
     @staticmethod
     def validate_user_id(user_id):
         if not user_id:
-            raise ParamNotFound(param=user_id)
+            raise ParamNotFoundError(param="user_id")
 
     @staticmethod
     def update_vote_count(vote_count_instance, winner):
