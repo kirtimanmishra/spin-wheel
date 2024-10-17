@@ -49,7 +49,7 @@ const SpinWheel = () => {
       }
 
       setSpinning(false);
-    }, 2000); // Spin for 2 seconds
+    }, 3000); // Spin for 2 seconds
   };
 
   useEffect(() => {
@@ -60,7 +60,7 @@ const SpinWheel = () => {
             () => images[Math.floor(Math.random() * images.length)]
           )
         );
-      }, 100); // Change images every 100ms
+      }, 200); // Change images every 100ms
 
       return () => clearInterval(intervalId);
     } else {
