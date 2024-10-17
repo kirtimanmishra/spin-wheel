@@ -14,7 +14,12 @@ const SpinWheel = () => {
   const [winner, setWinner] = useState(""); // State to track the winner
   const [shuffledImages, setShuffledImages] = useState([]);
 
-  const images = [kamalaImage, trumpImage, initImage1];
+  const images = [kamalaImage, trumpImage, kamalaImage, trumpImage];
+  const [currentImages, setCurrentImages] = useState([
+    images[0],
+    images[1],
+    images[2],
+  ]);
 
   // Function to spin the wheel and determine the winner
   const spin = () => {
@@ -49,17 +54,18 @@ const SpinWheel = () => {
 
   useEffect(() => {
     if (spinning) {
-      const shuffleImages = () => {
-        setShuffledImages(images.sort(() => Math.random() - 0.5));
-      };
-
-      // Shuffle images every 100ms while spinning
-      const intervalId = setInterval(shuffleImages, 100);
+      const intervalId = setInterval(() => {
+        setCurrentImages((prevImages) =>
+          prevImages.map(
+            () => images[Math.floor(Math.random() * images.length)]
+          )
+        );
+      }, 100); // Change images every 100ms
 
       return () => clearInterval(intervalId);
     } else {
       // Reset the images when not spinning
-      setShuffledImages([]);
+      setCurrentImages([images[0], images[1], images[2]]);
     }
   }, [spinning]);
 
@@ -69,13 +75,14 @@ const SpinWheel = () => {
       {spinning ? (
         // <div className={styles.loader}></div>
         <div className={styles.loader}>
-          {shuffledImages.map((img, index) => (
-            <img
-              key={index}
-              src={img}
-              alt={`loader-${index}`}
-              className={styles.loaderImage}
-            />
+          {currentImages.map((img, index) => (
+            <div key={index} className={styles.imageWrapper}>
+              <img
+                src={img}
+                alt={`loader-${index}`}
+                className={styles.loaderImage}
+              />
+            </div>
           ))}
         </div>
       ) : (

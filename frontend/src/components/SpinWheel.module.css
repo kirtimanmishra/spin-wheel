@@ -53,52 +53,43 @@
     transform: rotate(360deg);
   }
 } */
-
 .loader {
   display: flex; /* Use flex to align images */
   justify-content: center;
   align-items: center;
-  height: 120px; /* Same height as the previous loader */
-  animation: rotateLoader 1s linear infinite; /* Rotate the loader container */
+  height: 160px; /* Adjust this as needed */
+}
+
+/* Image wrapper for vertical rotation */
+.imageWrapper {
+  perspective: 1000px; /* Add perspective to create a 3D effect */
+  height: 160px; /* Adjust to match your loader height */
+  width: 160px; /* Match this to your image width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 20px;
+
 }
 
 /* Loader image styles */
 .loaderImage {
-  width: 100px; /* Adjust the size of images */
-  height: 100px;
-  margin: 0 5px; /* Spacing between images */
-  animation: rotateImage 1s linear infinite; /* Rotate each image */
+  width: 160px; /* Adjust the size of images */
+  height: 160px; /* Adjust to create a taller image for vertical rotation */
+  animation: verticalRotate 2s linear infinite; /* Rotate each image */
+  
 }
 
-/* Loader container rotation animation */
-@keyframes rotateLoader {
+/* Vertical flip animation around Y-axis */
+@keyframes verticalRotate {
   0% {
-    transform: rotate(0deg);
+    transform: rotateX(0deg);
   }
   100% {
-    transform: rotate(360deg);
+    transform: rotateX(360deg);
   }
 }
 
-/* Individual image rotation animation */
-@keyframes rotateImage {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* Optional fade animation */
-@keyframes fade {
-  0%, 100% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
-  }
-}
 
 
 .spinText {
