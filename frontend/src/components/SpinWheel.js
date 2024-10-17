@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Wheel from "./Wheel";
 import trumpImage from "../images/trump.png"; // Import Trump image
 import styles from "./SpinWheel.module.css"; // Import the CSS module
@@ -12,6 +12,9 @@ const SpinWheel = () => {
   const [slots, setSlots] = useState([initImage1, initImage2, initImage3]); // Initial slots
   const [spinning, setSpinning] = useState(false);
   const [winner, setWinner] = useState(""); // State to track the winner
+  const [shuffledImages, setShuffledImages] = useState([]);
+
+  const images = [kamalaImage, trumpImage, initImage1];
 
   // Function to spin the wheel and determine the winner
   const spin = () => {
@@ -44,11 +47,37 @@ const SpinWheel = () => {
     }, 2000); // Spin for 2 seconds
   };
 
+  useEffect(() => {
+    if (spinning) {
+      const shuffleImages = () => {
+        setShuffledImages(images.sort(() => Math.random() - 0.5));
+      };
+
+      // Shuffle images every 100ms while spinning
+      const intervalId = setInterval(shuffleImages, 100);
+
+      return () => clearInterval(intervalId);
+    } else {
+      // Reset the images when not spinning
+      setShuffledImages([]);
+    }
+  }, [spinning]);
+
   return (
     <div className={styles.spinWheelContainer}>
       {/* Loader appears while spinning */}
       {spinning ? (
-        <div className={styles.loader}></div>
+        // <div className={styles.loader}></div>
+        <div className={styles.loader}>
+          {shuffledImages.map((img, index) => (
+            <img
+              key={index}
+              src={img}
+              alt={`loader-${index}`}
+              className={styles.loaderImage}
+            />
+          ))}
+        </div>
       ) : (
         <div className={styles.wheelContainer}>
           {slots.map((slot, index) => (
