@@ -3,7 +3,7 @@
     /* background-color: rgb(149, 198, 229);  */
     border-radius: 15px; /* More rounded for a lottery look */
     /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); */
-    margin-right: 50px;
+    margin-left: 50px;
     text-align: center; /* Center-align everything */
 }
 
@@ -25,13 +25,13 @@
     font-size: 1.5rem; /* Larger, playful font */
     font-weight: bold;
     color: #333;
-    background-color: #ffd700; /* Bright yellow for cells */
+    background-color: #ee337b; /* Bright yellow for cells */
     transition: transform 0.2s ease; /* Add smooth interaction */
 }
 
 /* Header style */
 .voteTable th {
-    background-color: #c8f5a6; /* Light gray background for headers */
+    background-color: #d2e40f; /* Light gray background for headers */
     font-size: 1.4rem;
     padding: 15px;
 }
