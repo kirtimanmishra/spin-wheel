@@ -1,6 +1,6 @@
 .spinWheelContainer {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 80px;
 }
   
 .wheelContainer {
@@ -63,14 +63,25 @@
 
 /* Image wrapper for vertical rotation */
 .imageWrapper {
-  perspective: 1000px; /* Add perspective to create a 3D effect */
-  height: 160px; /* Adjust to match your loader height */
-  width: 160px; /* Match this to your image width */
-  margin: 0 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  font-size: 3rem;
+  margin: 20px;
+  display: inline-block;
+  padding: 0; /* Remove padding to allow the image to fill the area */
+  border: 1px solid #ccc;
+  width: 160px;
+  height: 160px;
+  line-height: 160px; /* This line is not needed for images */
+  border-radius: 10px;
+  background-color: #f2f2f2;
+  text-align: center;
+  margin-top: 60px;
+  /* 3D effect */
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2),
+              -5px -5px 10px rgba(255, 255, 255, 0.7),
+              inset 5px 5px 10px rgba(0, 0, 0, 0.1),
+              inset -5px -5px 10px rgba(255, 255, 255, 0.5);
 
+  overflow: hidden; /* Ensure any overflow is hidden */
 }
 
 /* Loader image styles */
