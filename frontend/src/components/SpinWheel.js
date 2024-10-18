@@ -42,9 +42,9 @@ const SpinWheel = () => {
       // Determine the winner
       let newWinner = "No winner";
       if (trumpCount >= 2) {
-        newWinner = "Trump";
+        newWinner = "trump";
       } else if (kamalaCount >= 2) {
-        newWinner = "Kamala";
+        newWinner = "kamala";
       }
       setWinner(newWinner);
       setToggleWinner((prev) => !prev);
@@ -128,7 +128,7 @@ const SpinWheel = () => {
         </button>
       </div>
 
-      {/* {winner && <h2>Winner: {winner}</h2>} */}
+      {winner && <h4>Winner: {winner}</h4>}
       <div className={styles.resultsContainer}>
         <div className={styles.votesWrapper}>
           <GlobalVotes winner={winner} toggleWinner={toggleWinner} />
