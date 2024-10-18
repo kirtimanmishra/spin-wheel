@@ -70,9 +70,8 @@ const SpinWheel = () => {
 
   return (
     <div className={styles.spinWheelContainer}>
-      {/* Loader appears while spinning */}
+      {/* Conditional rendering based on spinning state */}
       {spinning ? (
-        // <div className={styles.loader}></div>
         <div className={styles.loader}>
           {currentImages.map((img, index) => (
             <div key={index} className={styles.imageWrapper}>
@@ -92,15 +91,19 @@ const SpinWheel = () => {
         </div>
       )}
 
-      {!spinning && (
+      <div className={styles.buttonContainer}>
         <button
           className={styles.spinButton}
           onClick={spin}
           disabled={spinning}
         >
-          <span className={styles.spinText}>Spin</span>
+          {spinning ? (
+            <span className={styles.spinTextLoading}>Loading...</span>
+          ) : (
+            <span className={styles.spinText}>Spin</span>
+          )}
         </button>
-      )}
+      </div>
 
       {winner && <h2>Winner: {winner}</h2>}
     </div>

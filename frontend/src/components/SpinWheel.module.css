@@ -1,11 +1,14 @@
 .spinWheelContainer {
   text-align: center;
-  margin-top: 80px;
+  margin-top: 60px;
+  position: relative; 
 }
   
 .wheelContainer {
   display: flex;
   justify-content: center;
+  align-items: center;
+  margin-top: 20px; /* Add margin for separation from the button */
 }
   
 /* src/SpinWheel.module.css */
@@ -16,18 +19,17 @@
   padding: 10px 20px; 
   text-align: center; /* Center text */
   text-decoration: none; /* Remove underline from text */
-  display: inline-block; /* Display as inline-block */
-  font-size: 1.2rem; /* Increase font size */
-  margin: 10px 0; /* Margin around the button */
+  font-size: 1.2rem;
+  margin: 10px 0;
   cursor: pointer; /* Pointer cursor on hover */
   border-radius: 5px; /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
-  transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+  /* transition: background-color 0.3s, transform 0.3s;  */
 }
 
 .spinButton:hover {
   background-color: #2f0fae; /* Darker green on hover */
-  transform: translateY(-2px); /* Slightly raise the button */
+  /* transform: translateY(-2px);  */
 }
 
 .spinButton:disabled {
@@ -37,10 +39,8 @@
 
   
 .loader {
-  display: flex; /* Use flex to align images */
   justify-content: center;
   align-items: center;
-  height: 160px; /* Adjust this as needed */
 }
 
 /* Image wrapper for vertical rotation */
@@ -56,7 +56,7 @@
   border-radius: 10px;
   background-color: #f2f2f2;
   text-align: center;
-  margin-top: 60px;
+  margin-top: 40px;
   /* 3D effect */
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2),
               -5px -5px 10px rgba(255, 255, 255, 0.7),
@@ -87,13 +87,26 @@
 
 
 .spinText {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
   color: #ecf2f596;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   letter-spacing: 2px;
+}
+
+.spinTextLoading {
+  font-size: 16px;
+  font-weight: bold;
+  color: #4f1fca96;
+  /* text-transform: uppercase; */
+  letter-spacing: 1px;
 }
 
 .spin-text:hover {
   color: #45a049;
+}
+
+.buttonContainer {
+  text-align: center;
+  margin-top: 40px;
 }
