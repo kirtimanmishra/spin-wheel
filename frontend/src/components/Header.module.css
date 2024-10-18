@@ -1,7 +1,16 @@
-/* src/Header.module.css */
 .header {
   text-align: center;
-  margin: 1; /* Remove margin */
-  font-size: 1.0rem; /* Adjust the font size as needed */
-  color: #333; /* Change text color */
+  margin: 10px 0; /* Adds vertical spacing above and below */
+  font-size: 30px; /* Large font size for emphasis */
+  color: #ffcc00; /* Bright gold color */
+  font-weight: 800; /* Strong font weight */
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4); /* Adds a stronger shadow for depth */
+  font-family: 'Arial', sans-serif; /* Choose a playful font */
+  letter-spacing: 2px; /* Space between letters for emphasis */
+}
+
+.header i {
+  margin: 0 10px; /* Space around icons */
+  font-size: 1.5em; /* Make icons slightly larger */
+  color: #ffcc00; /* Match icon color with text */
 }

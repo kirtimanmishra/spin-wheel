@@ -6,4 +6,5 @@
   height: auto; /* Allow the height to adjust based on content */
   min-height: 100vh; /* Ensures it covers at least the viewport height */
   padding: 20px;
+  background-color: rgb(123, 189, 231);
 }
