@@ -128,7 +128,6 @@ const SpinWheel = () => {
         </button>
       </div>
 
-      {winner && <h4>Winner: {winner}</h4>}
       <div className={styles.resultsContainer}>
         <div className={styles.votesWrapper}>
           <GlobalVotes winner={winner} toggleWinner={toggleWinner} />
