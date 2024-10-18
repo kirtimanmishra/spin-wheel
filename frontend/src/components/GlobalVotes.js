@@ -1,18 +1,28 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
+import styles from "./GlobalVotes.module.css"; // Importing the new CSS module
 
-const GlobalVotes = ({ winner, refreshVotes }) => {
-  useEffect(() => {
-    if (winner) {
-      console.log("Global Votes updated: ", winner);
-      // Add logic to fetch and display global votes related to the winner
-    }
-  }, [winner, refreshVotes]); // Trigger when either winner or refreshVotes changes
+const GlobalVotes = ({ winner, toggleWinner }) => {
+  const [trumpCount, setTrumpCount] = useState(0);
+  const [kamalaCount, setKamalaCount] = useState(0);
 
   return (
-    <div>
-      <h3>Global Votes</h3>
-      <p>Winner: {winner}</p>
-      {/* Render global vote counts or related information here */}
+    <div className={styles.globalVotesContainer}>
+      <h4 className={styles.header}>Total Count</h4>
+
+      <table className={styles.voteTable}>
+        <thead>
+          <tr>
+            <th>Trump</th>
+            <th>Kamala</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{trumpCount}</td>
+            <td>{kamalaCount}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 };

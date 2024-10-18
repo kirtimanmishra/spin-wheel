@@ -1,0 +1,70 @@
+.globalVotesContainer {
+    padding: 10px;
+    /* background-color: rgb(149, 198, 229);  */
+    border-radius: 15px; /* More rounded for a lottery look */
+    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); */
+    margin-right: 50px;
+    text-align: center; /* Center-align everything */
+}
+
+
+/* Styling the table itself */
+.voteTable {
+    width: 100%;
+    border-collapse: separate; 
+    border: 3px solid black; /* Outer border */
+    border-radius: 15px; /* Round corners for the whole table */
+    overflow: hidden; /* Ensures rounded corners for the table */
+    margin: 20px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for table */
+}
+
+.voteTable th, .voteTable td {
+    /* border: 2px solid black;  */
+    padding: 20px;
+    text-align: center;
+    font-size: 1.5rem; /* Larger, playful font */
+    font-weight: bold;
+    color: #333;
+    background-color: #ffd700; /* Bright yellow for cells */
+    transition: transform 0.2s ease; /* Add smooth interaction */
+}
+
+/* Header style */
+.voteTable th {
+    background-color: #f1f1f1; /* Light gray background for headers */
+    /* border-radius: 15px 15px 0 0;  */
+    font-size: 1.4rem;
+    padding: 15px;
+}
+
+/* Cell hover effect */
+.voteTable td:hover {
+    transform: scale(1.1); /* Make cells slightly larger when hovered */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+/* Focus and selection styles */
+.voteTable {
+    outline: none; /* Prevents focus outline */
+}
+
+.voteTable th, .voteTable td {
+    user-select: none; /* Prevents selection highlight */
+}
+
+.voteTable td:focus {
+    outline: none; /* Prevents outline on focus */
+}
+
+.header {
+    text-align: center;
+    font-size: 20px; /* Large font size for emphasis */
+    color: #dc2e2e; /* Bright gold color */
+    font-weight: 800; /* Strong font weight */
+
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4); /* Adds a stronger shadow for depth */
+    font-family: 'Arial', sans-serif; /* Choose a playful font */
+    letter-spacing: 2px; /* Space between letters for emphasis */
+  }
+  

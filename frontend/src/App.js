@@ -1,7 +1,6 @@
 import React from "react";
 import SpinWheel from "./components/SpinWheel";
 import styles from "./App.module.css";
-import Bottom from "./components/Bottom";
 import Header from "./components/Header";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
@@ -10,7 +9,6 @@ const App = () => {
     <div className={styles.appContainer}>
       <Header />
       <SpinWheel />
-      <Bottom />
     </div>
   );
 };

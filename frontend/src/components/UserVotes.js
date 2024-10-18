@@ -1,18 +1,29 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 
-const UserVotes = ({ winner, refreshVotes }) => {
-  useEffect(() => {
-    if (winner) {
-      console.log("User Votes updated: ", winner);
-      // Add logic to fetch and display user votes related to the winner
-    }
-  }, [winner, refreshVotes]); // Trigger when either winner or refreshVotes changes
-
+const UserVotes = ({ winner, toggleWinner }) => {
+  console.log("*** winner USER *** ", winner);
+  console.log("*** toggleWinner USER  *** ", toggleWinner);
+  const { trumpCount, setTrumpCount } = useState(0);
+  const { kamalaCount, setKamalaCount } = useState(0);
   return (
     <div>
-      <h3>User Votes</h3>
-      <p>Winner: {winner}</p>
-      {/* Render user vote counts or related information here */}
+      <h4>Total Count</h4>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>Trump</th>
+              <th>Kamala</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{trumpCount}</td>
+              <td>{kamalaCount}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

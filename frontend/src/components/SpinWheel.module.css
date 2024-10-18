@@ -1,6 +1,6 @@
 .spinWheelContainer {
   text-align: center;
-  margin-top: 60px;
+  margin-top: 80px;
   position: relative; 
 }
   
@@ -13,13 +13,13 @@
   
 /* src/SpinWheel.module.css */
 .spinButton {
-  background-color: #4f5eb1; /* Green background */
+  background-color: #53c29b; /* Green background */
   border: none; /* Remove border */
   color: white; /* White text color */
   padding: 10px 20px; 
   text-align: center; /* Center text */
   text-decoration: none; /* Remove underline from text */
-  font-size: 1.2rem;
+  font-size: 15px;
   margin: 10px 0;
   cursor: pointer; /* Pointer cursor on hover */
   border-radius: 5px; /* Rounded corners */
@@ -28,7 +28,7 @@
 }
 
 .spinButton:hover {
-  background-color: #2f0fae; /* Darker green on hover */
+  background-color: #0fb79e; /* Darker green on hover */
   /* transform: translateY(-2px);  */
 }
 
@@ -97,9 +97,10 @@
 .spinTextLoading {
   font-size: 16px;
   font-weight: bold;
-  color: #4f1fca96;
+  color: #ecf2f596;
   /* text-transform: uppercase; */
   letter-spacing: 1px;
+  font-family: 'Arial', sans-serif;
 }
 
 .spin-text:hover {
@@ -109,4 +110,21 @@
 .buttonContainer {
   text-align: center;
   margin-top: 40px;
+}
+
+.resultsContainer {
+  display: flex;
+  align-items: center; /* Center items vertically */
+  margin-top: 20px; /* Add some spacing above */
+}
+
+.votesWrapper {
+  flex: 1; /* Take up equal space */
+  padding: 0 20px; /* Add horizontal padding */
+}
+
+.verticalLine {
+  width: 2px; /* Width of the line */
+  background-color: #ccc; /* Line color */
+  height: 250px; /* Height of the line */
 }

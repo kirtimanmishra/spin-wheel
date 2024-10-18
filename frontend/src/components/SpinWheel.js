@@ -6,12 +6,15 @@ import initImage1 from "../images/init_image_1.png"; // Import Biden image
 import initImage2 from "../images/init_image_2.png"; // Import Biden image
 import initImage3 from "../images/init_image_3.png"; // Import Biden image
 import kamalaImage from "../images/kamala.png"; // Import Biden image
+import GlobalVotes from "./GlobalVotes";
+import UserVotes from "./UserVotes";
 
 const SpinWheel = () => {
   const candidates = [trumpImage, kamalaImage]; // Use images instead of names
   const [slots, setSlots] = useState([initImage1, initImage2, initImage3]); // Initial slots
   const [spinning, setSpinning] = useState(false);
   const [winner, setWinner] = useState(""); // State to track the winner
+  const [toggleWinner, setToggleWinner] = useState(false);
 
   const images = [kamalaImage, trumpImage, kamalaImage, trumpImage];
   const [currentImages, setCurrentImages] = useState([
@@ -23,7 +26,6 @@ const SpinWheel = () => {
   // Function to spin the wheel and determine the winner
   const spin = () => {
     setSpinning(true);
-    setWinner(""); // Reset winner state before spinning
 
     setTimeout(() => {
       // Randomly assign Trump or Biden images to each slot
@@ -31,25 +33,46 @@ const SpinWheel = () => {
         () => candidates[Math.floor(Math.random() * 2)]
       );
       setSlots(newSlots);
-
-      // Count occurrences of Trump and Biden
+      // calculateWinner(newSlots);
       const trumpCount = newSlots.filter((slot) => slot === trumpImage).length;
       const kamalaCount = newSlots.filter(
         (slot) => slot === kamalaImage
       ).length;
 
       // Determine the winner
+      let newWinner = "No winner";
       if (trumpCount >= 2) {
-        setWinner("Trump");
+        newWinner = "Trump";
       } else if (kamalaCount >= 2) {
-        setWinner("kamala");
-      } else {
-        setWinner("No winner");
+        newWinner = "Kamala";
       }
-
+      setWinner(newWinner);
+      setToggleWinner((prev) => !prev);
       setSpinning(false);
-    }, 3000); // Spin for 2 seconds
+    }, 2000); // Spin for 2 seconds
   };
+
+  // const calculateWinner = (newSlots) => {
+  //   // Count occurrences of Trump and Biden
+  //   setTimeout(() => {
+  //     const trumpCount = newSlots.filter((slot) => slot === trumpImage).length;
+  //     const kamalaCount = newSlots.filter(
+  //       (slot) => slot === kamalaImage
+  //     ).length;
+
+  //     // Determine the winner
+  //     let newWinner = "No winner";
+  //     if (trumpCount >= 2) {
+  //       newWinner = "Trump";
+  //     } else if (kamalaCount >= 2) {
+  //       newWinner = "Kamala";
+  //     }
+  //     setWinner(newWinner);
+  //     setToggleWinner((prev) => !prev);
+  //     setSpinning(false);
+  //     setToggleWinner((prev) => !prev);
+  //   }, 4000);
+  // };
 
   useEffect(() => {
     if (spinning) {
@@ -105,7 +128,16 @@ const SpinWheel = () => {
         </button>
       </div>
 
-      {winner && <h2>Winner: {winner}</h2>}
+      {/* {winner && <h2>Winner: {winner}</h2>} */}
+      <div className={styles.resultsContainer}>
+        <div className={styles.votesWrapper}>
+          <GlobalVotes winner={winner} toggleWinner={toggleWinner} />
+        </div>
+        <div className={styles.verticalLine} />
+        <div className={styles.votesWrapper}>
+          <UserVotes winner={winner} toggleWinner={toggleWinner} />
+        </div>
+      </div>
     </div>
   );
 };
