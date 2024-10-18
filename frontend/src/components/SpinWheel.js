@@ -12,7 +12,6 @@ const SpinWheel = () => {
   const [slots, setSlots] = useState([initImage1, initImage2, initImage3]); // Initial slots
   const [spinning, setSpinning] = useState(false);
   const [winner, setWinner] = useState(""); // State to track the winner
-  const [shuffledImages, setShuffledImages] = useState([]);
 
   const images = [kamalaImage, trumpImage, kamalaImage, trumpImage];
   const [currentImages, setCurrentImages] = useState([
