@@ -7,4 +7,5 @@
   min-height: 100vh; /* Ensures it covers at least the viewport height */
   padding: 20px;
   background-color: rgb(123, 189, 231);
+  overflow: hidden; /* Prevent overflow */
 }

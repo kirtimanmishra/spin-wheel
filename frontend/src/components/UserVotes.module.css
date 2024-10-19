@@ -33,7 +33,7 @@
 .voteTable th {
     background-color: #d2e40f; /* Light gray background for headers */
     font-size: 1.4rem;
-    padding: 15px;
+    padding: 10px;
 }
 
 /* Cell hover effect */
