@@ -129,6 +129,19 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 APPEND_SLASH = False
 
 # CORS configuration
+CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # Allow your frontend
 ]
+
+# settings.py
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:3000",
+    # Add other trusted origins if necessary
+]
+
+
+# Allow cookies from specific domains only
+# SESSION_COOKIE_SAMESITE = "None"  # Necessary for cross-origin cookies
+# SESSION_COOKIE_SECURE = True  # Set to True if using HTTPS

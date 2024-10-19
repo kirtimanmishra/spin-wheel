@@ -1,6 +1,7 @@
-import uuid
+import traceback
 
 from myspinwheelapp.exceptions import (  # importing from a package instead of relative import
+    InvalidParamException,
     InvalidWinnerParamError,
     ParamNotFoundError,
 )
@@ -14,37 +15,45 @@ from .serializers import GlobalVoteCountSerializer, UserVoteCountSerializer
 
 class GlobalVoteListView(APIView):
     def get(self, request):
-        global_votes = GlobalVoteCount.objects.all()
-        serializer = GlobalVoteCountSerializer(global_votes, many=True)
-        return Response(serializer.data)
+        try:
+            global_votes = GlobalVoteCount.objects.all()
+            serializer = GlobalVoteCountSerializer(global_votes, many=True)
+            return Response(serializer.data)
+        except InvalidParamException as e:
+            print(traceback.format_exc())
+            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
     def post(self, request):
-        winner = request.query_params.get("winner")
-        VoteListHelper.validate_winner(winner=winner)
+        try:
+            winner = request.query_params.get("winner")
+            VoteListHelper.validate_winner(winner=winner)
 
-        global_vote = GlobalVoteCount.objects.first()
-        if not global_vote:
-            global_vote = GlobalVoteCount.objects.create()
-        VoteListHelper.update_vote_count(global_vote, winner)
+            global_vote = GlobalVoteCount.objects.first()
+            if not global_vote:
+                global_vote = GlobalVoteCount.objects.create()
+            VoteListHelper.update_vote_count(global_vote, winner)
 
-        data = {
-            "trump_vote_count": global_vote.trump_vote_count,
-            "kamala_vote_count": global_vote.kamala_vote_count,
-        }
-        global_vote_serializer = GlobalVoteCountSerializer(global_vote, data=data)
-        global_vote_serializer.is_valid(raise_exception=True)
-        global_vote_serializer.save()
-        serialized_data = global_vote_serializer.data
+            data = {
+                "trump_vote_count": global_vote.trump_vote_count,
+                "kamala_vote_count": global_vote.kamala_vote_count,
+            }
+            global_vote_serializer = GlobalVoteCountSerializer(global_vote, data=data)
+            global_vote_serializer.is_valid(raise_exception=True)
+            global_vote_serializer.save()
+            serialized_data = global_vote_serializer.data
 
-        return Response(
-            serialized_data,
-            status=status.HTTP_200_OK,
-        )
+            return Response(
+                serialized_data,
+                status=status.HTTP_200_OK,
+            )
+        except InvalidParamException as e:
+            print(traceback.format_exc())
+            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class UserVoteListView(APIView):
     def get(self, request):
-        user_id = str(request.COOKIES.get("userId"))
+        user_id = request.COOKIES.get("userId")
         try:
             user_vote = UserVoteCount.objects.get(user_id=user_id)
             serializer = UserVoteCountSerializer(user_vote)
@@ -53,29 +62,36 @@ class UserVoteListView(APIView):
             return Response(
                 {"error": "User id not found."}, status=status.HTTP_404_NOT_FOUND
             )
+        except InvalidParamException as e:
+            print(traceback.format_exc())
+            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
     def post(self, request):
-        winner = request.query_params.get("winner")
-        user_id = str(request.COOKIES.get("userId"))
+        try:
+            winner = request.query_params.get("winner")
+            user_id = request.COOKIES.get("userId")
 
-        VoteListHelper.validate_winner(winner=winner)
-        VoteListHelper.validate_user_id(user_id=user_id)
+            VoteListHelper.validate_winner(winner=winner)
+            VoteListHelper.validate_user_id(user_id=user_id)
 
-        user_vote, _ = UserVoteCount.objects.get_or_create(user_id=user_id)
-        VoteListHelper.update_vote_count(user_vote, winner)
-        data = {
-            "trump_vote_count": user_vote.trump_vote_count,
-            "kamala_vote_count": user_vote.kamala_vote_count,
-            "user_id": user_vote.user_id,
-        }
-        user_vote_serializer = UserVoteCountSerializer(user_vote, data=data)
-        user_vote_serializer.is_valid(raise_exception=True)
-        user_vote_serializer.save()
-        serialized_data = user_vote_serializer.data
-        return Response(
-            serialized_data,
-            status=status.HTTP_200_OK,
-        )
+            user_vote, _ = UserVoteCount.objects.get_or_create(user_id=user_id)
+            VoteListHelper.update_vote_count(user_vote, winner)
+            data = {
+                "trump_vote_count": user_vote.trump_vote_count,
+                "kamala_vote_count": user_vote.kamala_vote_count,
+                "user_id": user_vote.user_id,
+            }
+            user_vote_serializer = UserVoteCountSerializer(user_vote, data=data)
+            user_vote_serializer.is_valid(raise_exception=True)
+            user_vote_serializer.save()
+            serialized_data = user_vote_serializer.data
+            return Response(
+                serialized_data,
+                status=status.HTTP_200_OK,
+            )
+        except InvalidParamException as e:
+            print(traceback.format_exc())
+            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class VoteListHelper:

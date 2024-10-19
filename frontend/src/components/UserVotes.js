@@ -2,29 +2,34 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import styles from "./UserVotes.module.css"; // Importing the new CSS module
+import Cookies from "js-cookie";
 
 const UserVotes = ({ winner, toggleWinner }) => {
   const [trumpCount, setTrumpCount] = useState(0);
   const [kamalaCount, setKamalaCount] = useState(0);
 
   const backendURL = process.env.REACT_APP_BACKEND_URL;
+  // Cookies.set("user_id", "12345", { expires: 7 });
 
   useEffect(() => {
     console.log("### winner USER #### ", winner);
-    const fetchVotes = async () => {
-      try {
-        const response = await axios.post(
-          `${backendURL}/election/userVotes?winner=${winner}`
-        );
-        console.log("**** response USER **** ", response.data);
-        const data = await response.data;
-        setTrumpCount(data.trump_vote_count);
-        setKamalaCount(data.kamala_vote_count);
-      } catch (error) {
-        console.error("Error fetching votes:", error);
-      }
-    };
-    fetchVotes();
+    console.log("### winner USER #### ", typeof winner);
+
+    if (winner !== "") {
+      axios
+        .post(`${backendURL}/election/userVotes?winner=${winner}`, {
+          withCredentials: true,
+        })
+        .then((response) => {
+          const { trump_vote_count, kamala_vote_count } = response.data;
+          setTrumpCount(trump_vote_count);
+          setKamalaCount(kamala_vote_count);
+        })
+        .catch((err) => {
+          setTrumpCount((prev) => prev);
+          setKamalaCount((prev) => prev);
+        });
+    }
   }, [toggleWinner]);
 
   return (

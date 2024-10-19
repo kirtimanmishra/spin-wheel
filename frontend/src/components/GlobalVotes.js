@@ -34,6 +34,10 @@ const GlobalVotes = ({ winner, toggleWinner }) => {
           setTimeout(() => {
             setHighlight({ trump: false, kamala: false });
           }, 1000);
+        })
+        .catch((err) => {
+          setTrumpCount((prev) => prev);
+          setKamalaCount((prev) => prev);
         });
     }
   }, [toggleWinner]);
