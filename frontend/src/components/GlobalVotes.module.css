@@ -25,7 +25,7 @@
     font-size: 1.5rem; /* Larger, playful font */
     font-weight: bold;
     color: #333;
-    background-color: #ffd700; /* Bright yellow for cells */
+    background-color: #acac48; /* Bright yellow for cells */
     transition: transform 0.2s ease; /* Add smooth interaction */
 }
 
@@ -65,4 +65,24 @@
     font-family: 'Arial', sans-serif; /* Choose a playful font */
     letter-spacing: 2px; /* Space between letters for emphasis */
   }
+  
+  .highlightIncrement {
+    background-color: #f3f030; /* Bright yellow for increment highlight */
+    animation: pulse 1s; /* 1-second animation to highlight increment */
+  }
+  
+  /* Pulse animation */
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+
   

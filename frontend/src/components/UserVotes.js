@@ -10,10 +10,11 @@ const UserVotes = ({ winner, toggleWinner }) => {
   const backendURL = process.env.REACT_APP_BACKEND_URL;
 
   useEffect(() => {
+    console.log("### winner USER #### ", winner);
     const fetchVotes = async () => {
       try {
         const response = await axios.post(
-          `${process.env.REACT_APP_BACKEND_URL}/election/userVotes?winner=${winner}`
+          `${backendURL}/election/userVotes?winner=${winner}`
         );
         console.log("**** response USER **** ", response.data);
         const data = await response.data;
