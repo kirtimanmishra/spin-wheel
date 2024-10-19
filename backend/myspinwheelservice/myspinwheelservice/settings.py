@@ -143,5 +143,5 @@ CSRF_TRUSTED_ORIGINS = [
 
 
 # Allow cookies from specific domains only
-# SESSION_COOKIE_SAMESITE = "None"  # Necessary for cross-origin cookies
-# SESSION_COOKIE_SECURE = True  # Set to True if using HTTPS
+SESSION_COOKIE_SAMESITE = "None"
+SESSION_COOKIE_SECURE = True
