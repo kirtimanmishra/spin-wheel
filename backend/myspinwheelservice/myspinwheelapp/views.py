@@ -70,7 +70,6 @@ class UserVoteListView(APIView):
         try:
             winner = request.query_params.get("winner")
             user_id = request.COOKIES.get("userId")
-            print("**** user_id *** ", user_id)
 
             VoteListHelper.validate_winner(winner=winner)
             VoteListHelper.validate_user_id(user_id=user_id)
