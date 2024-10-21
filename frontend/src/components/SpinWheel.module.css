@@ -13,7 +13,7 @@
   
 /* src/SpinWheel.module.css */
 .spinButton {
-  background-color: #53c29b; /* Green background */
+  background-color: #539fc2; /* Green background */
   border: none; /* Remove border */
   color: white; /* White text color */
   padding: 10px 20px; 
@@ -27,12 +27,12 @@
 }
 
 .spinButton:hover {
-  background-color: #0fb79e; /* Darker green on hover */
+  background-color: #0685ee; /* Darker green on hover */
   /* transform: translateY(-2px);  */
 }
 
 .spinButton:disabled {
-  background-color: #ccc; /* Gray background when disabled */
+  background-color: #dc2810; /* Gray background when disabled */
   cursor: not-allowed; /* Not-allowed cursor */
 }
 
