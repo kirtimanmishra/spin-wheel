@@ -18,23 +18,30 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for table */
 }
 
-.voteTable th, .voteTable td {
-    /* border: 2px solid black;  */
-    padding: 20px;
+.voteTable th {
+    padding: 12px;
     text-align: center;
-    font-size: 1.5rem; /* Larger, playful font */
+    font-size: 1.5rem; 
     font-weight: bold;
     color: #333;
-    background-color: #ebeb63; /* Bright yellow for cells */
-    transition: transform 0.2s ease; /* Add smooth interaction */
+    background-color: #c8f5a6; 
+    user-select: none; 
+
+    transition: transform 0.2s ease; 
 }
 
-/* Header style */
-.voteTable th {
-    background-color: #c8f5a6; /* Light gray background for headers */
-    font-size: 1.4rem;
-    padding: 10px;
+.voteTable td {
+  padding: 20px;
+  text-align: center;
+  font-size: 2.0rem;
+  font-weight: bold;
+  color: #333;
+  user-select: none; 
+
+  background-color: #ebeb63; 
 }
+
+
 
 /* Cell hover effect */
 .voteTable td:hover {
@@ -48,7 +55,6 @@
 }
 
 .voteTable th, .voteTable td {
-    user-select: none; /* Prevents selection highlight */
 }
 
 .voteTable td:focus {

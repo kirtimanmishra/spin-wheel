@@ -3,7 +3,7 @@
     /* background-color: rgb(149, 198, 229);  */
     border-radius: 15px; /* More rounded for a lottery look */
     /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); */
-    margin-left: 60px;
+    margin-left: 70px;
     text-align: center; /* Center-align everything */
 }
 
@@ -13,27 +13,32 @@
     width: 100%;
     border-collapse: separate; 
     border: 3px solid black; /* Outer border */
-    border-radius: 15px; /* Round corners for the whole table */
+    border-radius: 10px; /* Round corners for the whole table */
     overflow: hidden; /* Ensures rounded corners for the table */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow for table */
 }
 
-.voteTable th, .voteTable td {
-    /* border: 2px solid black;  */
-    padding: 20px;
-    text-align: center;
-    font-size: 1.5rem; /* Larger, playful font */
-    font-weight: bold;
-    color: #333;
-    background-color: #ee337b; /* Bright yellow for cells */
-    transition: transform 0.2s ease; /* Add smooth interaction */
+
+.voteTable th {
+  padding: 12px;
+  text-align: center;
+  font-size: 1.5rem; 
+  font-weight: bold;
+  color: #333;
+  background-color: #d2e40f;
+  transition: transform 0.2s ease;
+  user-select: none;
 }
 
-/* Header style */
-.voteTable th {
-    background-color: #d2e40f; /* Light gray background for headers */
-    font-size: 1.4rem;
-    padding: 10px;
+.voteTable td {
+  padding: 20px;
+  text-align: center;
+  font-size: 2.0rem; 
+  font-weight: bold;
+  color: #333;
+  background-color: #ee337b;
+  user-select: none;
+  transition: transform 0.2s ease;
 }
 
 /* Cell hover effect */
@@ -45,10 +50,6 @@
 /* Focus and selection styles */
 .voteTable {
     outline: none; /* Prevents focus outline */
-}
-
-.voteTable th, .voteTable td {
-    user-select: none; /* Prevents selection highlight */
 }
 
 .voteTable td:focus {
