@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  myspinwheelservice_local:
+    image: spin_wheel_service:dev
+    build: 
+      context: myspinwheelservice
+    env_file:
+      - myspinwheelservice/.env
+    ports:
+      - "8000:8000"
+    container_name: myspinwheelservice_local_app
+  db:
+    image: postgres:13.16
+    ports:
+      - "5432:5432"
+    env_file:
+      - myspinwheelservice/.env 
+    container_name: test-db

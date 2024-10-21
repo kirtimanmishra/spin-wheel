@@ -14,8 +14,10 @@ const GlobalVotes = ({ winner, toggleWinner }) => {
     if (winner === "") {
       axios.get(`${backendURL}/election/globalVotes`).then((response) => {
         const data = response.data;
-        setTrumpCount(data[0].trump_vote_count);
-        setKamalaCount(data[0].kamala_vote_count);
+        if (data.length > 0) {
+          setTrumpCount(data[0].trump_vote_count);
+          setKamalaCount(data[0].kamala_vote_count);
+        }
       });
     } else {
       axios
