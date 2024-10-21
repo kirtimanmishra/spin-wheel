@@ -65,6 +65,10 @@ const UserVotes = ({ winner, toggleWinner }) => {
           }
           setTrumpCount(trump_vote_count);
           setKamalaCount(kamala_vote_count);
+
+          setTimeout(() => {
+            setHighlight({ trump: false, kamala: false });
+          }, 1000);
         })
         .catch((err) => {
           setTrumpCount((prev) => prev);

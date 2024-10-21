@@ -8,6 +8,7 @@ import initImage3 from "../images/init_image_3.png";
 import kamalaImage from "../images/kamala.png";
 import GlobalVotes from "./GlobalVotes";
 import UserVotes from "./UserVotes";
+import WinnerModal from "./WinnerModal";
 
 const SpinWheel = () => {
   const candidates = [trumpImage, kamalaImage];
@@ -15,7 +16,7 @@ const SpinWheel = () => {
   const [spinning, setSpinning] = useState(false);
   const [winner, setWinner] = useState("");
   const [toggleWinner, setToggleWinner] = useState(false);
-
+  const [showModal, setShowModal] = useState(false);
   const images = [kamalaImage, trumpImage, kamalaImage, trumpImage];
   const [currentImages, setCurrentImages] = useState([
     images[0],
@@ -45,6 +46,8 @@ const SpinWheel = () => {
       setWinner(newWinner);
       setToggleWinner((prev) => !prev);
       setSpinning(false);
+      setShowModal(true);
+      closeModal();
     }, 1000);
   };
 
@@ -64,8 +67,16 @@ const SpinWheel = () => {
     }
   }, [spinning]);
 
+  const closeModal = () => {
+    setTimeout(() => {
+      setShowModal(false);
+    }, 1500);
+  };
+
   return (
     <div className={styles.spinWheelContainer}>
+      {showModal && <WinnerModal winner={winner} />}
+
       {spinning ? (
         <div className={styles.loader}>
           {currentImages.map((img, index) => (
