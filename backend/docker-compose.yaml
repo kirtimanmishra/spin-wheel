@@ -16,3 +16,8 @@ services:
     env_file:
       - myspinwheelservice/.env 
     container_name: test-db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
