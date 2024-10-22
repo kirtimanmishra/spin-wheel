@@ -1,5 +1,14 @@
 version: '3.8'
 services:
+  myspinwheelservice_dev:
+    image: us-central1-docker.pkg.dev/spin-wheel-439406/spin-wheel-backend/myspinwheelservice:dev
+    build:
+      context: myspinwheelservice
+    env_file:
+      - myspinwheelservice/.env
+    ports:
+      - "8000:8000"
+    container_name: myspinwheelservice_dev_app
   myspinwheelservice_local:
     image: spin_wheel_service:dev
     build: 
