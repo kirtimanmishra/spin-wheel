@@ -150,8 +150,8 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",  # For local development
-    "https://uselectiontrumoharrisgame.com",  # Your production domain
-    "https://*.uselectiontrumoharrisgame.com",  # To cover subdomains
+    "https://uselectiontrumpharrisgame.com",  # Your production domain
+    "https://*.uselectiontrumpharrisgame.com",  # To cover subdomains
 ]
 
 
