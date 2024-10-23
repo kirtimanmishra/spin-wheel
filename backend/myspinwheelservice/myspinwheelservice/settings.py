@@ -30,7 +30,7 @@ SECRET_KEY = "django-insecure-)c+hdloxhsnu$g_=_0)vghfz$@oieps2&ww$81#(&zc6rv5$re
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -145,15 +145,13 @@ APPEND_SLASH = False
 
 # CORS configuration
 CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # Allow your frontend
-]
 
-# settings.py
+CORS_ALLOW_ALL_ORIGINS = True
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:3000",
-    # Add other trusted origins if necessary
+    "http://localhost:3000",  # For local development
+    "https://uselectiontrumoharrisgame.com",  # Your production domain
+    "https://*.uselectiontrumoharrisgame.com",  # To cover subdomains
 ]
 
 

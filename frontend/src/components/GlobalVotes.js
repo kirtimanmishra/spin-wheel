@@ -8,11 +8,13 @@ const GlobalVotes = ({ winner, toggleWinner }) => {
   const [kamalaCount, setKamalaCount] = useState(0);
   const [highlight, setHighlight] = useState({ trump: false, kamala: false });
 
-  const backendURL = process.env.REACT_APP_BACKEND_URL;
-
   useEffect(() => {
     if (winner === "") {
-      axios.get(`${backendURL}/election/globalVotes`).then((response) => {
+      const requestOptions = {
+        method: "GET",
+        url: "/api/v1/election/globalVotes",
+      };
+      axios(requestOptions).then((response) => {
         const data = response.data;
         if (data.length > 0) {
           setTrumpCount(data[0].trump_vote_count);
@@ -20,8 +22,11 @@ const GlobalVotes = ({ winner, toggleWinner }) => {
         }
       });
     } else {
-      axios
-        .post(`${backendURL}/election/globalVotes?winner=${winner}`)
+      const requestOptions = {
+        method: "POST",
+        url: `/api/v1/election/globalVotes?winner=${winner}`,
+      };
+      axios(requestOptions)
         .then((response) => {
           const { trump_vote_count, kamala_vote_count } = response.data;
           if (trump_vote_count > trumpCount) {

@@ -17,13 +17,16 @@ const UserVotes = ({ winner, toggleWinner }) => {
     const userId = Cookies.get("userId");
 
     if (userId) {
-      axios
-        .get(`${backendURL}/election/userVotes`, {
-          headers: {
-            "X-CSRFToken": csrfToken,
-          },
-          withCredentials: true,
-        })
+      const requestOptions = {
+        method: "GET",
+        url: "/api/v1/election/userVotes",
+      };
+      axios(requestOptions, {
+        headers: {
+          "X-CSRFToken": csrfToken,
+        },
+        withCredentials: true,
+      })
         .then((response) => {
           const { trump_vote_count, kamala_vote_count } = response.data;
           setTrumpCount(trump_vote_count);
@@ -45,17 +48,20 @@ const UserVotes = ({ winner, toggleWinner }) => {
 
   useEffect(() => {
     if (winner !== "") {
-      axios
-        .post(
-          `${backendURL}/election/userVotes?winner=${winner}`,
-          {},
-          {
-            headers: {
-              "X-CSRFToken": csrfToken,
-            },
-            withCredentials: true,
-          }
-        )
+      const requestOptions = {
+        method: "POST",
+        url: `/api/v1/election/userVotes?winner=${winner}`,
+      };
+      axios(
+        requestOptions,
+        {},
+        {
+          headers: {
+            "X-CSRFToken": csrfToken,
+          },
+          withCredentials: true,
+        }
+      )
         .then((response) => {
           const { trump_vote_count, kamala_vote_count } = response.data;
           if (trump_vote_count > trumpCount) {

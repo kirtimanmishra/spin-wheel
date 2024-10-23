@@ -21,5 +21,5 @@ from myspinwheelapp import urls as mywheelappurls
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("election/", include(mywheelappurls)),
+    path("api/v1/election/", include(mywheelappurls)),
 ]
