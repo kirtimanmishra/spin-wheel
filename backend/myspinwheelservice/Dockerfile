@@ -1,4 +1,5 @@
-FROM python:3.11-slim
+# Use a specific architecture to avoid compatibility issues
+FROM --platform=linux/amd64 python:3.9-slim
 
 # Set the working directory to /app
 WORKDIR /app
@@ -6,7 +7,7 @@ WORKDIR /app
 # Install PDM
 RUN pip install pdm
 
-# Copy all files to /app
+# Copy only necessary files to reduce image size
 COPY . /app
 
 # Create virtual environment and install dependencies
@@ -21,5 +22,5 @@ RUN chmod +x /app/entrypoint.sh
 # Expose port 8000
 EXPOSE 8000
 
-# Use relative path for ENTRYPOINT to start ./entrypoint.sh
-ENTRYPOINT ["./entrypoint.sh"]
+# Use the full path for ENTRYPOINT
+ENTRYPOINT ["/app/entrypoint.sh"]
