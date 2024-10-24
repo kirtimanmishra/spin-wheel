@@ -18,8 +18,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from myspinwheelapp import urls as mywheelappurls
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
+
+@api_view(["GET"])
+def health_check(request):
+    return Response({"health": "succesfull"}, status=status.HTTP_200_OK)
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("api/v1/health", health_check, name="health_check"),
     path("api/v1/election/", include(mywheelappurls)),
 ]
