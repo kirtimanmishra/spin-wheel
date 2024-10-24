@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   myspinwheelservice_dev:
-    image: us-central1-docker.pkg.dev/spin-wheel-439406/spin-wheel-backend/myspinwheelservice:dev
+    image: us-central1-docker.pkg.dev/access-project-413708/spin-wheel-repo/myspinwheelservice:dev
     build:
       context: myspinwheelservice
     env_file:
