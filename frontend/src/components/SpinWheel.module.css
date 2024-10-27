@@ -1,6 +1,6 @@
 .spinWheelContainer {
   text-align: center;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   position: relative; 
 }
   
@@ -8,7 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
   
 /* src/SpinWheel.module.css */
@@ -16,10 +16,10 @@
   background-color: #539fc2; /* Green background */
   border: none; /* Remove border */
   color: white; /* White text color */
-  padding: 10px 20px; 
+  padding: 5px 10px; 
   text-align: center; /* Center text */
   text-decoration: none; /* Remove underline from text */
-  font-size: 15px;
+  font-size: 10px;
   cursor: pointer; /* Pointer cursor on hover */
   border-radius: 5px; /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
@@ -45,7 +45,7 @@
 /* Image wrapper for vertical rotation */
 .imageWrapper {
   font-size: 3rem;
-  margin: 20px;
+  /* margin: 20px; */
   display: inline-block;
   padding: 0; /* Remove padding to allow the image to fill the area */
   border: 1px solid #ccc;
@@ -55,7 +55,7 @@
   border-radius: 10px;
   background-color: #f2f2f2;
   text-align: center;
-  margin-top: 40px;
+  /* margin-top: 40px; */
   /* margin-top: 40px; */
   /* 3D effect */
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2),
@@ -68,8 +68,8 @@
 
 /* Loader image styles */
 .loaderImage {
-  width: 160px; /* Adjust the size of images */
-  height: 160px; /* Adjust to create a taller image for vertical rotation */
+  width: 160px; 
+  height: 160px; 
   animation: verticalRotate 2s linear infinite; /* Rotate each image */
   animation-play-state: paused;
 }
@@ -115,6 +115,9 @@
 .resultsContainer {
   display: flex;
   align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  /* margin-left: 150px; */
+
 }
 
 .votesWrapper {
@@ -122,9 +125,8 @@
 }
 
 .verticalLine {
-  width: 2px; /* Width of the line */
-  background-color: #ccc; /* Line color */
-  margin-left: 40px;
+  width: 2px;
+  background-color: #ccc;
   margin-top: 50px;
-  height: 200px;
+  height: 100px;
 }

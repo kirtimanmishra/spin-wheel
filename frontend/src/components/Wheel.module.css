@@ -1,29 +1,43 @@
 .wheel {
-    font-size: 2rem;
-    margin: 20px;
-    display: inline-block;
-    padding: 0; /* Remove padding to allow the image to fill the area */
-    border: 1px solid #ccc;
-    width: 160px;
-    height: 160px;
-    line-height: 160px; /* This line is not needed for images */
-    border-radius: 10px;
-    background-color: #f2f2f2;
-    text-align: center;
+  font-size: 1.5rem; /* Scaled down for better readability on mobile */
+  margin: 10px 5px;
+  display: inline-block;
+  padding: 0;
+  border: 1px solid #ccc;
+  width: 160px;
+  height: 160px;
+  line-height: 160px;
+  border-radius: 10px;
+  background-color: #f2f2f2;
+  text-align: center;
   
-    /* 3D effect */
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2),
-                -5px -5px 10px rgba(255, 255, 255, 0.7),
-                inset 5px 5px 10px rgba(0, 0, 0, 0.1),
-                inset -5px -5px 10px rgba(255, 255, 255, 0.5);
-  
-    overflow: hidden; /* Ensure any overflow is hidden */
+  /* 3D effect */
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2),
+              -5px -5px 10px rgba(255, 255, 255, 0.7),
+              inset 5px 5px 10px rgba(0, 0, 0, 0.1),
+              inset -5px -5px 10px rgba(255, 255, 255, 0.5);
+
+  overflow: hidden;
+
+  /* Add responsive width and height scaling */
+  @media (max-width: 768px) {
+    width: 120px;
+    height: 120px;
+    font-size: 1.2rem;
+    line-height: 120px;
   }
-  
-  .candidateImage {
-    width: 100%; /* Fill the entire width of the slot */
-    height: 100%; /* Fill the entire height of the slot */
-    object-fit: cover; /* Maintain aspect ratio while covering */
-    border-radius: 10px; /* Optional: match the border radius */
+
+  @media (max-width: 480px) {
+    width: 100px;
+    height: 100px;
+    font-size: 1rem;
+    line-height: 100px;
   }
-  
+}
+
+.candidateImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}

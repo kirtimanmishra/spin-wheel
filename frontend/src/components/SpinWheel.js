@@ -115,7 +115,6 @@ const SpinWheel = () => {
         <div className={styles.votesWrapper}>
           <GlobalVotes winner={winner} toggleWinner={toggleWinner} />
         </div>
-        <div className={styles.verticalLine} />
         <div className={styles.votesWrapper}>
           <UserVotes winner={winner} toggleWinner={toggleWinner} />
         </div>

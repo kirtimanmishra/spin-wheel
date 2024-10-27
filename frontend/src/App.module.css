@@ -9,3 +9,9 @@
   background-color: rgb(123, 189, 231);
   overflow: hidden; /* Prevent overflow */
 }
+
+@media (max-width: 600px) {
+  .appContainer {
+    padding: 10px;
+  }
+}
