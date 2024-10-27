@@ -44,26 +44,21 @@
 
 /* Image wrapper for vertical rotation */
 .imageWrapper {
-  font-size: 3rem;
-  /* margin: 20px; */
-  display: inline-block;
-  padding: 0; /* Remove padding to allow the image to fill the area */
-  border: 1px solid #ccc;
-  width: 160px;
-  height: 160px;
-  line-height: 160px; /* This line is not needed for images */
-  border-radius: 10px;
-  background-color: #f2f2f2;
-  text-align: center;
-  /* margin-top: 40px; */
-  /* margin-top: 40px; */
-  /* 3D effect */
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2),
-              -5px -5px 10px rgba(255, 255, 255, 0.7),
-              inset 5px 5px 10px rgba(0, 0, 0, 0.1),
-              inset -5px -5px 10px rgba(255, 255, 255, 0.5);
+  font-size: 3rem; /* This can be kept as is, or adjusted based on your layout needs */
+  display: inline-flex; /* Use inline-flex for better alignment of contents */
+  /* margin-top: 10px; */
+  margin: 10px 5px;
 
-  overflow: hidden; /* Ensure any overflow is hidden */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  padding: 0; /* Remove padding to allow the image to fill the area */
+  border: 2px solid #ccc; /* Maintain the border */
+  width: 100px; /* Keep width */
+  height: 100px; /* Keep height */
+  border-radius: 10px; /* Keep rounded corners */
+  background-color: #f2f2f2; /* Keep background color */
+  overflow: hidden; /* Prevent any overflow from child elements */
+  transition: transform 0.3s ease; /* Smooth transition for hover effects */
 }
 
 /* Loader image styles */
@@ -77,10 +72,13 @@
 /* Vertical flip animation around Y-axis */
 @keyframes verticalRotate {
   0% {
-    transform: rotateX(0deg);
+    transform: rotateX(0deg) ;
+    transform-origin: center center; 
   }
   100% {
-    transform: rotateX(360deg);
+    transform: rotateX(360deg)  ;
+    transform-origin: center center; 
+
   }
 }
 

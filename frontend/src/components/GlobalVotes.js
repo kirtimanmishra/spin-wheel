@@ -4,6 +4,8 @@ import axios from "axios";
 import styles from "./GlobalVotes.module.css"; // Importing the new CSS module
 
 const GlobalVotes = ({ winner, toggleWinner }) => {
+  const myWinner = winner.toLowerCase();
+
   const [trumpCount, setTrumpCount] = useState(0);
   const [kamalaCount, setKamalaCount] = useState(0);
   const [highlight, setHighlight] = useState({ trump: false, kamala: false });
@@ -24,7 +26,7 @@ const GlobalVotes = ({ winner, toggleWinner }) => {
     } else {
       const requestOptions = {
         method: "POST",
-        url: `/api/v1/election/globalVotes?winner=${winner}`,
+        url: `/api/v1/election/globalVotes?winner=${myWinner}`,
       };
       axios(requestOptions)
         .then((response) => {

@@ -39,9 +39,9 @@ const SpinWheel = () => {
 
       let newWinner = "No winner";
       if (trumpCount >= 2) {
-        newWinner = "trump";
+        newWinner = "Trump";
       } else if (kamalaCount >= 2) {
-        newWinner = "kamala";
+        newWinner = "Kamala";
       }
       setWinner(newWinner);
       setToggleWinner((prev) => !prev);

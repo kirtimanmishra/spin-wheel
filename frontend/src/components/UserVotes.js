@@ -6,6 +6,7 @@ import Cookies from "js-cookie";
 import { v4 as uuidv4 } from "uuid";
 
 const UserVotes = ({ winner, toggleWinner }) => {
+  const myWinner = winner.toLowerCase();
   const [trumpCount, setTrumpCount] = useState(0);
   const [kamalaCount, setKamalaCount] = useState(0);
   const [highlight, setHighlight] = useState({ trump: false, kamala: false });
@@ -50,7 +51,7 @@ const UserVotes = ({ winner, toggleWinner }) => {
     if (winner !== "") {
       const requestOptions = {
         method: "POST",
-        url: `/api/v1/election/userVotes?winner=${winner}`,
+        url: `/api/v1/election/userVotes?winner=${myWinner}`,
       };
       axios(
         requestOptions,
