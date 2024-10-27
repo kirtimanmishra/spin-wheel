@@ -1,6 +1,6 @@
 .spinWheelContainer {
   text-align: center;
-  /* margin-top: 10px; */
+  margin-top: 10px;
   position: relative; 
 }
   
@@ -16,10 +16,10 @@
   background-color: #539fc2; /* Green background */
   border: none; /* Remove border */
   color: white; /* White text color */
-  padding: 5px 10px; 
+  padding: 3px 6px; 
   text-align: center; /* Center text */
   text-decoration: none; /* Remove underline from text */
-  font-size: 10px;
+  font-size: 5px;
   cursor: pointer; /* Pointer cursor on hover */
   border-radius: 5px; /* Rounded corners */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
@@ -53,8 +53,8 @@
   align-items: center; /* Center content vertically */
   padding: 0; /* Remove padding to allow the image to fill the area */
   border: 2px solid #ccc; /* Maintain the border */
-  width: 100px; /* Keep width */
-  height: 100px; /* Keep height */
+  width: 100px;
+  height: 100px;
   border-radius: 10px; /* Keep rounded corners */
   background-color: #f2f2f2; /* Keep background color */
   overflow: hidden; /* Prevent any overflow from child elements */
@@ -93,7 +93,7 @@
 }
 
 .spinTextLoading {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
   color: #ecf2f596;
   /* text-transform: uppercase; */
@@ -107,7 +107,9 @@
 
 .buttonContainer {
   text-align: center;
-  /* margin-top: 20px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .resultsContainer {
@@ -118,9 +120,6 @@
 
 }
 
-.votesWrapper {
-  padding: 0 20px; /* Add horizontal padding */
-}
 
 .verticalLine {
   width: 2px;

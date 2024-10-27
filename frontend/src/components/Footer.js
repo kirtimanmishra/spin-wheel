@@ -14,26 +14,23 @@ const Footer = () => {
         <ul>
           <li>
             <strong>Email</strong>:{" "}
-            <a href="mailto:support@electionspin2024.com">
-              support@electionspin2024.com
-            </a>
+            <a href="mailto:udiapplemail@gmail.com">udiapplemail@gmail.com</a>
           </li>
           <li>
-            <strong>Phone</strong>: +1 (123) 456-7890
+            <strong>Phone</strong>: +91 6002185460
           </li>
           <li>
-            <strong>Address</strong>: 123 Election Lane, Washington, D.C., USA
+            <strong>Address</strong>: Guwahati, Assam, India, 781028
           </li>
         </ul>
-        <h3>Follow Us</h3>
         <ul>
           <li>
             <a
-              href="https://twitter.com/ElectionSpin2024"
+              href="https://x.com/kirtiman_dev"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Twitter: @ElectionSpin2024
+              Twitter: @kirtiman_dev
             </a>
           </li>
           <li>

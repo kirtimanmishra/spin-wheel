@@ -48,7 +48,7 @@ const SpinWheel = () => {
       setSpinning(false);
       setShowModal(true);
       closeModal();
-    }, 1000);
+    }, 2000);
   };
 
   useEffect(() => {

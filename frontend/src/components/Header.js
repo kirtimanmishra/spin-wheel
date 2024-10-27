@@ -5,7 +5,7 @@ import styles from "./Header.module.css"; // Optional: Create a CSS module for s
 const Header = () => {
   return (
     <header className={styles.header}>
-      🎰 Kamala vs Trump Slot Machine! 🎰
+      🎰 World !!! Make your Heros win 🎰
     </header>
   );
 };
