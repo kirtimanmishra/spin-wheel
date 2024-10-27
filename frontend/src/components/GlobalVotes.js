@@ -53,13 +53,13 @@ const GlobalVotes = ({ winner, toggleWinner }) => {
 
   return (
     <div className={styles.globalVotesContainer}>
-      <h4 className={styles.header}>Total Count</h4>
+      <h4 className={styles.header}>Global Count</h4>
 
       <table className={styles.voteTable}>
         <thead>
           <tr>
-            <th>Trump</th>
-            <th>Kamala</th>
+            <th>DJ</th>
+            <th>KH</th>
           </tr>
         </thead>
         <tbody>

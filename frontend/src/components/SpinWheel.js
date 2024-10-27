@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Wheel from "./Wheel";
-import trumpImage from "../images/trump.png";
+import trumpImage from "../images/trump.jpeg";
 import styles from "./SpinWheel.module.css";
-import initImage1 from "../images/init_image_1.png";
-import initImage2 from "../images/init_image_2.png";
-import initImage3 from "../images/init_image_3.png";
-import kamalaImage from "../images/kamala.png";
+import initImage1 from "../images/init_image_1.jpeg";
+import initImage2 from "../images/init_image_2.jpeg";
+import initImage3 from "../images/init_image_3.jpeg";
+import kamalaImage from "../images/kamala.jpeg";
 import GlobalVotes from "./GlobalVotes";
 import UserVotes from "./UserVotes";
 import WinnerModal from "./WinnerModal";
@@ -111,14 +111,8 @@ const SpinWheel = () => {
         </button>
       </div>
 
-      <div className={styles.resultsContainer}>
-        <div className={styles.votesWrapper}>
-          <GlobalVotes winner={winner} toggleWinner={toggleWinner} />
-        </div>
-        <div className={styles.votesWrapper}>
-          <UserVotes winner={winner} toggleWinner={toggleWinner} />
-        </div>
-      </div>
+      <GlobalVotes winner={winner} toggleWinner={toggleWinner} />
+      <UserVotes winner={winner} toggleWinner={toggleWinner} />
     </div>
   );
 };
