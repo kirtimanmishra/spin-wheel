@@ -93,7 +93,7 @@ const SpinWheel = () => {
   const closeModal = () => {
     setTimeout(() => {
       setShowModal(false);
-    }, 1000);
+    }, 1500);
   };
 
   return (

@@ -14,7 +14,9 @@ const Footer = () => {
         <ul>
           <li>
             <strong>Email</strong>:{" "}
-            <a href="mailto:udiapplemail@gmail.com">udiapplemail@gmail.com</a>
+            <a href="mailto:trumpharrisslotmachinegame@gmail.com">
+              trumpharrisslotmachinegame@gmail.com
+            </a>
           </li>
           <li>
             <strong>Phone</strong>: +91 6002185460
@@ -31,6 +33,15 @@ const Footer = () => {
               rel="noopener noreferrer"
             >
               Twitter: @kirtiman_dev
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.instagram.com/trumpvsharris_slotgame/profilecard/?igsh=a3p1azI1aDluM2Zu"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Instagram: trumpvsharris_slotgame
             </a>
           </li>
           <li>
