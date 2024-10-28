@@ -3,7 +3,12 @@ import axios from "axios";
 
 import styles from "./GlobalVotes.module.css"; // Importing the new CSS module
 
-const GlobalVotes = ({ winner, toggleWinner }) => {
+const GlobalVotes = ({
+  winner,
+  toggleWinner,
+  loading,
+  handleGlobalVotesLoading,
+}) => {
   const myWinner = winner.toLowerCase();
 
   const [trumpCount, setTrumpCount] = useState(0);
@@ -42,7 +47,7 @@ const GlobalVotes = ({ winner, toggleWinner }) => {
 
           setTimeout(() => {
             setHighlight({ trump: false, kamala: false });
-          }, 1000);
+          }, 500);
         })
         .catch((err) => {
           setTrumpCount((prev) => prev);
@@ -50,6 +55,25 @@ const GlobalVotes = ({ winner, toggleWinner }) => {
         });
     }
   }, [toggleWinner]);
+
+  useEffect(() => {
+    if (loading) {
+      const requestOptions = {
+        method: "GET",
+        url: "/api/v1/election/globalVotes",
+      };
+      axios(requestOptions).then((response) => {
+        const data = response.data;
+        if (data.length > 0) {
+          setTrumpCount(data[0].trump_vote_count);
+          setKamalaCount(data[0].kamala_vote_count);
+        }
+        handleGlobalVotesLoading();
+      });
+    } else {
+      handleGlobalVotesLoading();
+    }
+  }, [loading]);
 
   return (
     <div className={styles.globalVotesContainer}>

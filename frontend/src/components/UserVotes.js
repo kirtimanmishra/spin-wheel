@@ -5,7 +5,12 @@ import styles from "./UserVotes.module.css"; // Importing the new CSS module
 import Cookies from "js-cookie";
 import { v4 as uuidv4 } from "uuid";
 
-const UserVotes = ({ winner, toggleWinner }) => {
+const UserVotes = ({
+  winner,
+  toggleWinner,
+  loading,
+  handleUserVotesLoading,
+}) => {
   const myWinner = winner.toLowerCase();
   const [trumpCount, setTrumpCount] = useState(0);
   const [kamalaCount, setKamalaCount] = useState(0);
@@ -35,7 +40,7 @@ const UserVotes = ({ winner, toggleWinner }) => {
 
           setTimeout(() => {
             setHighlight({ trump: false, kamala: false });
-          }, 1000);
+          }, 500);
         })
         .catch((err) => {
           setTrumpCount((prev) => prev);
@@ -75,7 +80,7 @@ const UserVotes = ({ winner, toggleWinner }) => {
 
           setTimeout(() => {
             setHighlight({ trump: false, kamala: false });
-          }, 1000);
+          }, 500);
         })
         .catch((err) => {
           setTrumpCount((prev) => prev);
@@ -83,6 +88,41 @@ const UserVotes = ({ winner, toggleWinner }) => {
         });
     }
   }, [toggleWinner]);
+
+  useEffect(() => {
+    if (loading) {
+      const userId = Cookies.get("userId");
+      if (userId) {
+        const requestOptions = {
+          method: "GET",
+          url: "/api/v1/election/userVotes",
+        };
+        axios(requestOptions, {
+          headers: {
+            "X-CSRFToken": csrfToken,
+          },
+          withCredentials: true,
+        })
+          .then((response) => {
+            const { trump_vote_count, kamala_vote_count } = response.data;
+            setTrumpCount(trump_vote_count);
+            setKamalaCount(kamala_vote_count);
+
+            setTimeout(() => {
+              setHighlight({ trump: false, kamala: false });
+            }, 500);
+            handleUserVotesLoading();
+          })
+          .catch((err) => {
+            setTrumpCount((prev) => prev);
+            setKamalaCount((prev) => prev);
+            handleUserVotesLoading();
+          });
+      }
+    } else {
+      handleUserVotesLoading();
+    }
+  }, [loading]);
 
   return (
     <div className={styles.globalVotesContainer}>

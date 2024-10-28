@@ -9,6 +9,7 @@ import kamalaImage from "../images/kamala.jpeg";
 import GlobalVotes from "./GlobalVotes";
 import UserVotes from "./UserVotes";
 import WinnerModal from "./WinnerModal";
+import refreshLogo from "../images/logo.svg";
 
 const SpinWheel = () => {
   const candidates = [trumpImage, kamalaImage];
@@ -23,6 +24,28 @@ const SpinWheel = () => {
     images[1],
     images[2],
   ]);
+  const [loading, setLoading] = useState(false);
+  const [globalVotesLoading, setGlobalVotesLoading] = useState("start");
+  const [UserVotesLoading, setUserVotesLoading] = useState("start");
+
+  const handleRefresh = () => {
+    setLoading(true);
+    setGlobalVotesLoading("start");
+    setUserVotesLoading("start");
+  };
+
+  const handleGlobalVotesLoading = () => {
+    setGlobalVotesLoading("finish");
+  };
+
+  const handleUserVotesLoading = () => {
+    setUserVotesLoading("finish");
+  };
+
+  useEffect(() => {
+    if (globalVotesLoading === "finish" && UserVotesLoading === "finish")
+      setLoading(false);
+  }, [loading, globalVotesLoading, UserVotesLoading]);
 
   const spin = () => {
     setSpinning(true);
@@ -70,7 +93,7 @@ const SpinWheel = () => {
   const closeModal = () => {
     setTimeout(() => {
       setShowModal(false);
-    }, 1500);
+    }, 1000);
   };
 
   return (
@@ -109,10 +132,30 @@ const SpinWheel = () => {
             <span className={styles.spinText}>Spin</span>
           )}
         </button>
+
+        {loading ? (
+          <img src={refreshLogo} alt="Refresh" className={styles.loading} />
+        ) : (
+          <img
+            src={refreshLogo}
+            className={styles.refreshIconAsButton}
+            onClick={handleRefresh}
+          />
+        )}
       </div>
 
-      <GlobalVotes winner={winner} toggleWinner={toggleWinner} />
-      <UserVotes winner={winner} toggleWinner={toggleWinner} />
+      <GlobalVotes
+        winner={winner}
+        toggleWinner={toggleWinner}
+        loading={loading}
+        handleGlobalVotesLoading={handleGlobalVotesLoading}
+      />
+      <UserVotes
+        winner={winner}
+        toggleWinner={toggleWinner}
+        loading={loading}
+        handleUserVotesLoading={handleUserVotesLoading}
+      />
     </div>
   );
 };
