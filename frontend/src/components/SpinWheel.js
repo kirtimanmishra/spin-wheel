@@ -78,8 +78,8 @@ const SpinWheel = () => {
       setShowModal(true);
       setTimeout(() => {
         setShowModal(false);
-      }, 2000);
-    }, 1000);
+      }, 2500);
+    }, 1500);
   };
 
   useEffect(() => {
