@@ -69,9 +69,17 @@ const SpinWheel = () => {
       setWinner(newWinner);
       setToggleWinner((prev) => !prev);
       setSpinning(false);
-      setShowModal(true);
-      closeModal();
+      showCloseModal();
     }, 2000);
+  };
+
+  const showCloseModal = () => {
+    setTimeout(() => {
+      setShowModal(true);
+      setTimeout(() => {
+        setShowModal(false);
+      }, 2000);
+    }, 1000);
   };
 
   useEffect(() => {
@@ -89,12 +97,6 @@ const SpinWheel = () => {
       setCurrentImages([images[0], images[1], images[2]]);
     }
   }, [spinning]);
-
-  const closeModal = () => {
-    setTimeout(() => {
-      setShowModal(false);
-    }, 1500);
-  };
 
   return (
     <div className={styles.spinWheelContainer}>
