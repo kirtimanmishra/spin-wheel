@@ -7,7 +7,7 @@ const WinnerModal = ({ winner, closeModal }) => {
       <div className={styles.modalContent}>
         <h2>Winner!</h2>
         <p>
-          The winner is: <strong>{winner}</strong>
+          <strong>{winner}</strong>
         </p>
       </div>
     </div>
